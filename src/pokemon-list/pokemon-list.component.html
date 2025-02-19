@@ -1,9 +1,9 @@
-<body>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png"
-        alt="Poke" id="logo">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png"
+    alt="Poke" id="logo">
 
-    <input type="text" (input)="buscar($event)" placeholder="Buscar Pokémon por nombre o número..." />
+<input type="text" (input)="buscar($event)" placeholder="Buscar Pokémon por nombre o número..." />
 
+<div class="lista">
     <div class="lista">
         @for (poke of pokeFiltrado; track $index) {
             <app-pokemon-detail 
@@ -16,4 +16,4 @@
             (clickName)="clickName($event)" />
             }
     </div>
-</body>
+</div>
