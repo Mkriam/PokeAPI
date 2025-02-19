@@ -1,6 +1,64 @@
-:host {
-  display: block;
+.carta-poke {
+  width: 200px;  
+  height: 300px;  
+  perspective: 1000px;  
+  margin: 10px; 
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-img{
-  height: 150px;
+
+.frontal,
+.posterior {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.frontal {
+  background: linear-gradient(60deg, rgb(221, 221, 221), #bb1f1f);
+}
+
+.posterior {
+  transform: rotateY(180deg);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.nom_poke {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  
+}
+
+.habilidades_poke{
+  padding-top: 20px;
+}
+
+p{
+  font-weight: bolder;
+}
+
+.img-poke {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.carta-poke:hover .frontal {
+  transform: rotateY(180deg);
+}
+
+.carta-poke:hover .posterior {
+  transform: rotateY(0deg); 
 }
