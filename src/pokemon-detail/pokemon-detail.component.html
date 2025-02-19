@@ -1,0 +1,7 @@
+<img [src]="imagen" [alt]="'imagen de '+ pokemon">
+<h1>{{pokemon}}</h1>
+@for (hability of habilities; track $index) {
+    <p>{{hability}}</p>
+}
+<button (click)="clickName.emit('botón clicado')">Botón</button>
+<br><br><br>

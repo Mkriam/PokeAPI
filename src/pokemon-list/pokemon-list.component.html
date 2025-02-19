@@ -1,0 +1,10 @@
+@for (poke of pokemons; track $index) {
+    <app-pokemon-detail 
+    [pokemon]="poke.name" 
+    [imagen]="poke.src" 
+    [habilities]="poke.habilities"
+    (clickName)="clickName($event)" 
+    
+    />
+}
+
