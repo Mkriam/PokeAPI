@@ -9,5 +9,6 @@
         <p class="nom_poke">{{ pokemon }}</p>
         <p class="habilidades_poke">Habilidades: <br> {{ habilities.join(', ') }}</p>
         <p class="mov_poke">Movimientos: <br> {{ movimientos.join(', ') }}</p>
+        <button (click)="clickName.emit(pokemon + '\n  Pokedex: https://www.pokemon.com/us/pokedex/' + pokemon.toLowerCase())">Más info</button>
     </div>
 </div>

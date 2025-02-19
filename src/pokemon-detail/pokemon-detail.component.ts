@@ -22,7 +22,7 @@ export class PokemonDetailComponent {
   
     const colores: { [key: string]: string } = {
       agua: 'rgb(122, 185, 221)', 
-      fuego: '#bb1f1f', 
+      fuego: '#ce3b3b', 
       planta: 'rgb(123, 190, 123)',
       bicho:'rgb(181, 187, 99)',
       eléctrico: 'rgb(247, 247, 87)',
@@ -48,6 +48,4 @@ export class PokemonDetailComponent {
   
     return colores[this.tipo[0].toLowerCase()];
   }
-  
-
  }
