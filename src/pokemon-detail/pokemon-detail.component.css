@@ -34,6 +34,7 @@
   transform: rotateY(180deg);
   padding: 20px;
   box-sizing: border-box;
+  background: linear-gradient(60deg, rgb(221, 221, 221), #bb1f1f);
 }
 
 .nom_poke {
@@ -41,11 +42,20 @@
   font-weight: 100;
   margin: 0;
   font-family: 'Pokemon Solid', sans-serif;
-  
+  background-color:inherit;
 }
 
 .habilidades_poke{
+  background-color:inherit;
   padding-top: 20px;
+}
+
+.num_poke{
+  background-color:inherit;
+}
+
+.mov_poke{
+  background-color:inherit;
 }
 
 p{
@@ -57,6 +67,13 @@ p{
   max-height: 120px;
   object-fit: cover;
   margin-bottom: 10px;
+  background-color: inherit;
+  /*filter:brightness(1.1);
+  mix-blend-mode: multiply;*/
+}
+
+.tipo_poke{
+  background-color: inherit;
 }
 
 .carta-poke:hover .frontal {

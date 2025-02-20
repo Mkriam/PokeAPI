@@ -1,13 +1,16 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PokemonDetailComponent } from '../pokemon-detail/pokemon-detail.component';
+import { PokemonServiceService } from '../pokemon-service.service';
+import { PaginatorComponent } from '../paginator/paginator.component';
 
 @Component({
   selector: 'app-pokemon-list',
-  imports: [PokemonDetailComponent],
+  imports: [PokemonDetailComponent, PaginatorComponent],
   templateUrl: './pokemon-list.component.html',
   styleUrl: './pokemon-list.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  //changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class PokemonListComponent {
   public pokemons = [
     {
@@ -1116,6 +1119,26 @@ export class PokemonListComponent {
       habilities: ["Bucle Aire"]
     }
   ];
+/*
+
+export class PokemonListComponent {
+  public pokemons:any[] =[];
+
+  private pokemonService = inject(PokemonServiceService);
+
+  constructor(){
+    this.pokemonService.getPokemonList().subscribe((data)=>{
+      this.pokemons=data.results;
+    });
+  }
+*/
+  nextPage(){
+    console.log('sigiente');
+  }
+
+  prevPage(){
+    console.log('previa')
+  }
 
   
   public busqueda: string = '';
@@ -1124,6 +1147,7 @@ export class PokemonListComponent {
     this.busqueda = event.target.value.toLowerCase()
   }
 
+  
   get pokeFiltrado() {
     return this.pokemons.filter(poke =>poke.name.toLowerCase().includes(this.busqueda) || poke.num.includes(this.busqueda));
   }
