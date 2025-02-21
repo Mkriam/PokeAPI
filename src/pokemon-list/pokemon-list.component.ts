@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { PokemonDetailComponent } from '../pokemon-detail/pokemon-detail.component';
+import { PokemonDetailComponent } from '../pokemon-card/pokemon-card.component';
 import { PokemonServiceService } from '../pokemon-service.service';
 import { PaginatorComponent } from '../paginator/paginator.component';
 
@@ -10,7 +10,7 @@ import { PaginatorComponent } from '../paginator/paginator.component';
   styleUrl: './pokemon-list.component.scss',
   //changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
+/*
 export class PokemonListComponent {
   public pokemons = [
     {
@@ -1119,28 +1119,42 @@ export class PokemonListComponent {
       habilities: ["Bucle Aire"]
     }
   ];
-/*
+*/
 
 export class PokemonListComponent {
   public pokemons:any[] =[];
 
   private pokemonService = inject(PokemonServiceService);
 
+  pages?:any;
   constructor(){
     this.pokemonService.getPokemonList().subscribe((data)=>{
+      this.pages={next:data.next, previous: data.previous};
       this.pokemons=data.results;
     });
   }
-*/
-  nextPage(){
-    console.log('sigiente');
+
+  nextPage() {
+    if (this.pages.next) {
+      this.pokemonService.changePage(this.pages.next).subscribe((data) => {
+        this.pages = {next: data.next, previous: data.previous};
+        this.pokemons = data.results;
+      })
+    }
+    //console.log('siguiente pagina');
+  }
+  prevPage() {
+    if(this.pages.previous) {
+      this.pokemonService.changePage(this.pages.previous).subscribe((data) => {
+        this.pages = {next: data.next, previous: data.previous};
+        this.pokemons = data.results;
+      })
+    }
+    
+    //console.log('pagina anterior');
   }
 
-  prevPage(){
-    console.log('previa')
-  }
-
-  
+  /*
   public busqueda: string = '';
 
   buscar(event: any) {
@@ -1151,6 +1165,7 @@ export class PokemonListComponent {
   get pokeFiltrado() {
     return this.pokemons.filter(poke =>poke.name.toLowerCase().includes(this.busqueda) || poke.num.includes(this.busqueda));
   }
+    */
 
   clickName(frase: string) {
     console.log(frase);
