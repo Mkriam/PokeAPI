@@ -8,10 +8,10 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   styleUrl: './pokemon-card.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PokemonDetailComponent {
+export class PokemonCardComponent {
   @Input() pokemon: string ='';
   @Input() imagen: string='';
-  @Input() num: string='';
+  @Input() id: string='';
   @Input() tipo: Array<string>=[];
   @Input() habilities: Array<string>=[];
   @Input() movimientos: Array<string>=[];
@@ -42,10 +42,10 @@ export class PokemonDetailComponent {
     };
   
     if (this.tipo.length > 1) {
-      const gradient = this.tipo.map(ti => colores[ti.toLowerCase()] || colores['normal']);
+      const gradient = this.tipo.map(t => colores[t.toLowerCase()] || colores['normal']);
       return `linear-gradient(65deg, ${gradient.join(', ')})`;
     }
-  
-    return colores[this.tipo[0].toLowerCase()];
+
+    return colores[this.tipo[0]?.toLowerCase()] || 'lightgrey';
   }
  }

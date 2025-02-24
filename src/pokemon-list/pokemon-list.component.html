@@ -2,19 +2,22 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png"
     alt="Poke" id="logo">
 
+    <input type="text" (input)="buscar($event)" placeholder="Buscar Pokémon por nombre..." />
     <app-paginator (nextPage)="nextPage()" (prevPage)="prevPage()"/>
     
     <div class="lista">
-            @for (poke of pokemons; track $index) {
-                <app-pokemon-card 
-                [pokemon]="poke.name" 
-                [imagen]="'https://img.pokemondb.net/artwork/large/'+poke.name+'.jpg'"
-                (clickName)="clickName($event)" />
-                }
-        </div>
+        @for (poke of pokeFiltrado; track $index) {
+          <app-pokemon-card 
+            [pokemon]="poke.name"
+            [imagen]="'https://img.pokemondb.net/sprites/ruby-sapphire/normal/' + poke.name + '.png'"
+            [id]="poke.id"
+            [tipo]="poke.type"
+            (clickName)="clickName($event)" />
+        }
+      </div>
+      
  
     
-<!--<input type="text" (input)="buscar($event)" placeholder="Buscar Pokémon por nombre o número..." />-->
 
 <!--
 <div class="lista">

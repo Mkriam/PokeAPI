@@ -63,13 +63,12 @@ p{
 }
 
 .img-poke {
-  max-width: 120px;
-  max-height: 120px;
+  width: 160px;
+  height: 160px;
   object-fit: cover;
   margin-bottom: 10px;
+  border-radius: 20px;
   background-color: inherit;
-  /*filter:brightness(1.1);
-  mix-blend-mode: multiply;*/
 }
 
 .tipo_poke{

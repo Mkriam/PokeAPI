@@ -15,4 +15,8 @@ export class PokemonServiceService {
   changePage(url: string): Observable<any>{
     return this.http.get(url);
   }
+
+  getPokemonDetail(pokemonId:string): Observable<any>  { 
+    return this.http.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+  }
 }

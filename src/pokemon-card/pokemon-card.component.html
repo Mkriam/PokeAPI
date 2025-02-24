@@ -1,15 +1,14 @@
 <div class="carta-poke">
     <div class="frontal">
-        <img [src]="imagen" alt="Pokemon" class="img-poke" />
-        <!--<p class="num_poke">#{{ num }}</p>-->
-        <p class="nom_poke">{{ pokemon }}</p>
-        <!--<p class="tipo_poke">{{ tipo.join(', ') }}</p>-->
+      <img [src]="imagen" alt="Pokemon" class="img-poke" />
+      <p class="num_poke">#{{ id }}</p>
+      <p class="nom_poke">{{ pokemon }}</p>
+      <p class="tipo_poke">{{ tipo.join(', ') }}</p>
     </div>
     
-    <div class="posterior"><!--[style.background]="getColorTipo()"-->
-        <p class="nom_poke">{{ pokemon }}</p><!--
-        <p class="habilidades_poke">Habilidades: <br> {{ habilities.join(', ') }}</p>
-        <p class="mov_poke">Movimientos: <br> {{ movimientos.join(', ') }}</p>-->
-        <button (click)="clickName.emit(pokemon + '\n  Pokedex: https://www.pokemon.com/us/pokedex/' + pokemon.toLowerCase())">Más info</button>
+    <div class="posterior" [style.background]="getColorTipo()">
+      <p class="nom_poke">{{ pokemon }}</p>
+      <button (click)="clickName.emit(pokemon)">Ver Pokémon</button>
     </div>
-</div>
+  </div>
+  
