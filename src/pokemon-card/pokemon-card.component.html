@@ -2,12 +2,12 @@
     <div class="frontal">
       <img [src]="imagen" alt="Pokemon" class="img-poke" />
       <p class="num_poke">#{{ id }}</p>
-      <p class="nom_poke">{{ pokemon }}</p>
+      <p class="nom_poke">{{ pokemon | uppercase }}</p>
       <p class="tipo_poke">{{ tipo.join(', ') }}</p>
     </div>
     
     <div class="posterior" [style.background]="getColorTipo()">
-      <p class="nom_poke">{{ pokemon }}</p>
+      <p class="nom_poke">{{ pokemon | uppercase}}</p>
       <button (click)="clickName.emit(pokemon)">Ver Pokémon</button>
     </div>
   </div>

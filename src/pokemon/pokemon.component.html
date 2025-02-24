@@ -1,9 +1,45 @@
 @if (pokemon) {
-    {{pokemon.sprites.front_shiny | json}}
-    <br>
-    {{pokemon.name}}
-    <br>
-    <img [src]="pokemon.sprites.front_default" alt="" width="300px">
+<div class="contenedor">
+    <div class="carta">
+        <h1 class="pokemon_nom">{{pokemon.name | uppercase }}</h1>
+
+        <div class="info">
+
+            <img class="pokemon-img" [src]="pokemon.sprites.front_default" alt="" width="400px">
+
+            <div class="pokemon-stats">
+                <div class="pokemon-type">
+                    @for (tipo of pokemon.types; track $index) {
+                    <button [style.background-color]="getColorTipo(tipo.type?.name)">
+                        {{ tipoTraducciones[tipo.type?.name] || tipo.type?.name }}
+                    </button>
+                    }
+                </div>
+
+                <div class="info">
+                    <h3>Peso: {{pokemon.weight/10}}kg</h3>
+                    <h3>Altura: {{pokemon.height/10}}m</h3>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="pokemon-stats">
+            @for (stats of pokemon.stats; track $index) {
+            <div class="stats">
+                <span>
+                    {{ traducirStat(stats.stat.name) }} : {{ stats.base_stat }}
+                </span>
+                <div class="barraStats" [style.width]="stats.base_stat/2 + '%'"
+                    [style.background-color]="getStatColor($index)">
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+    <button class="volver" (click)="volver()">Volver</button>
+</div>
 }@else{
-    <img class="pokeball" alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/800px-Pok%C3%A9_Ball_icon.svg.png">
+<img class="pokeball" alt=""
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/800px-Pok%C3%A9_Ball_icon.svg.png">
 }

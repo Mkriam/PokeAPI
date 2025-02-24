@@ -1,5 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
-*{
-    background-color: rgb(245, 233, 220);
-    margin: 10px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background-image: url('https://img.freepik.com/fotos-premium/paisaje-anime-campo-nubes_900775-9778.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 50px 0;
 }

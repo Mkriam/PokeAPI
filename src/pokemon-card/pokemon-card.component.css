@@ -82,3 +82,29 @@ p{
 .carta-poke:hover .posterior {
   transform: rotateY(0deg); 
 }
+
+
+button {
+  background-color: goldenrod;
+  color: #333;
+  margin-top: 50px;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background-color: lightsalmon;
+  transform: scale(1.1);
+  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  transform: scale(1);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}

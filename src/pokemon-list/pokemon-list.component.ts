@@ -17,33 +17,47 @@ export class PokemonListComponent {
   private router = inject(Router);
   pages?: any;
 
-  /*constructor(){
-    this.pokemonService.getPokemonList().subscribe((data)=>{
-      this.pages={next:data.next, previous: data.previous};
-      this.pokemons=data.results;
-    });
-  }
+
+  tipoTraducciones: { [key: string]: string } = {
+    normal: "Normal",
+    fire: "Fuego",
+    water: "Agua",
+    electric: "Eléctrico",
+    grass: "Planta",
+    ice: "Hielo",
+    fighting: "Lucha",
+    poison: "Veneno",
+    ground: "Tierra",
+    flying: "Volador",
+    psychic: "Psíquico",
+    bug: "Bicho",
+    rock: "Roca",
+    ghost: "Fantasma",
+    dragon: "Dragón",
+    dark: "Siniestro",
+    steel: "Acero",
+    fairy: "Hada"
+  };
 
   constructor() {
     this.pokemonService.getPokemonList().subscribe((data) => {
       this.pages = { next: data.next, previous: data.previous };
       this.pokemons = data.results.map((poke: any) => ({
         name: poke.name,
-        id: poke.id,
-      }));
-    });
-  }*/
-
-  constructor() {
-    this.pokemonService.getPokemonList().subscribe((data) => {
-      this.pages = { next: data.next, previous: data.previous };
-      this.pokemons = data.results.map((poke: any, index: number) => ({
-        name: poke.name,
-        tipo: poke.type,
         id: poke.url.split('/').filter(Boolean).pop(),
+        tipos: [],
       }));
+
+      this.pokemons.forEach((pokemon) => {
+        this.pokemonService.getPokemonDetail(pokemon.id).subscribe((tipo) => {
+          pokemon.tipos = tipo.types.map((type: any) =>
+            this.tipoTraducciones[type.type.name] || type.type.name
+          );
+        });
+      });
     });
   }
+
 
   nextPage() {
     if (this.pages?.next) {
@@ -52,7 +66,15 @@ export class PokemonListComponent {
         this.pokemons = data.results.map((poke: any) => ({
           name: poke.name,
           id: poke.url.split('/').filter(Boolean).pop(),
+          tipos: [],
         }));
+
+        this.pokemons.forEach((pokemon) => {
+          this.pokemonService.getPokemonDetail(pokemon.id).subscribe((tipo) => {
+            pokemon.tipos = tipo.types.map((type: any) =>
+              this.tipoTraducciones[type.type.name] || type.type.name);
+          });
+        });
       });
     }
   }
@@ -63,30 +85,21 @@ export class PokemonListComponent {
         this.pages = { next: data.next, previous: data.previous };
         this.pokemons = data.results.map((poke: any) => ({
           name: poke.name,
-          id: poke.url.split('/').filter(Boolean).pop,
+          id: poke.url.split('/').filter(Boolean).pop(),
+          tipos: [],
         }));
+
+        this.pokemons.forEach((pokemon) => {
+          this.pokemonService.getPokemonDetail(pokemon.id).subscribe((tipo) => {
+            pokemon.tipos = tipo.types.map((type: any) =>
+              this.tipoTraducciones[type.type.name] || type.type.name);
+          });
+        });
       });
     }
   }
 
 
-  /*
-    nextPage() {
-      if (this.pages.next) {
-        this.pokemonService.changePage(this.pages.next).subscribe((data) => {
-          this.pages = {next: data.next, previous: data.previous};
-          this.pokemons = data.results;
-        })
-      }
-    }
-    prevPage() {
-      if(this.pages.previous) {
-        this.pokemonService.changePage(this.pages.previous).subscribe((data) => {
-          this.pages = {next: data.next, previous: data.previous};
-          this.pokemons = data.results;
-        })
-      }
-    }*/
 
   public busqueda: string = '';
 

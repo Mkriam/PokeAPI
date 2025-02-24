@@ -1,8 +1,9 @@
+import { UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-pokemon-card',
-  imports: [],
+  imports: [UpperCasePipe],
   template: `<p>Detalle de pokemon</p>`,
   templateUrl: './pokemon-card.component.html',
   styleUrl: './pokemon-card.component.css',
